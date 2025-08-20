@@ -85,7 +85,7 @@ export default function Calendar() {
             <h2 className="text-xl text-center font-bold mt-12 mb-2">
               {monthName}
             </h2>
-            <div className="grid grid-cols-7 gap-2 mt-6  w-max ">
+            <div className="grid grid-cols-5 gap-2 mt-6  w-max ">
               {monthDays.map((day, idx) => {
                 const dateStr = format(day, "yyyy-MM-dd");
                 const isReserved = reservedDates.includes(dateStr);
