@@ -2,8 +2,10 @@
 import { motion } from "framer-motion";
 import star from "./assets/star-solid-full.svg";
 import Image from "next/image";
+import { useRouter } from "next/navigation";
 
 export default function Home() {
+  const router = useRouter();
   return (
     <main className="flex flex-col items-center gap-4 justify-center">
       <div className="hookup-text flex text-4xl p-4 gap-4 font-bold">
@@ -116,6 +118,19 @@ export default function Home() {
           >
             <h1>Osvezivanje Vozila</h1>
           </motion.div>
+        </div>
+        <div className="w-full flex justify-center">
+          <motion.button
+            initial={{ y: "1000%" }}
+            animate={{ y: 0 }}
+            transition={{ type: "spring", damping: 10, delay: 2.7 }}
+            onClick={() => {
+              router.push("/reservation");
+            }}
+            className=" bg-orange-400 font-bold cursor-pointer text-lg p-3 px-10 mt-24 rounded-full"
+          >
+            Zakazi
+          </motion.button>
         </div>
       </div>
     </main>
