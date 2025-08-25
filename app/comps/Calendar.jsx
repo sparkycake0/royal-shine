@@ -15,6 +15,7 @@ export default function Calendar() {
   const [loading, setLoading] = useState(true);
   const [client, setClient] = useState({
     phoneNumber: "",
+    description: "",
   });
   const [popupDay, setPopupDay] = useState(null);
   useEffect(() => {
@@ -60,6 +61,7 @@ export default function Calendar() {
       date: dateStr,
       createdAt: new Date().toISOString(),
       phoneNumber: client.phoneNumber,
+      description: client.description,
     });
 
     setReservedDates([...reservedDates, dateStr]);
@@ -70,7 +72,7 @@ export default function Calendar() {
   if (loading) return <p>Loading...</p>;
 
   return (
-    <div className="p-4 space-y-6">
+    <div className="p-4 space-y-6 ">
       <h1 className="text-orange-400 font-bold text-4xl text-center">
         Rezervacija
       </h1>
@@ -111,7 +113,21 @@ export default function Calendar() {
                           className="bg-neutral-800 border-orange-400 border-2 p-2 text-lg rounded-lg"
                           onChange={(e) => {
                             setClient({
+                              ...client,
                               phoneNumber: e.target.value,
+                            });
+                          }}
+                        />
+                        <h1 className="font-bold text-center text-xl">
+                          Dodajte opis:
+                        </h1>
+                        <textarea
+                          type="text"
+                          className="bg-neutral-800 border-orange-400 h-32 max-h-32 min-h-32 w-2/3 border-2 p-2 text-lg rounded-lg"
+                          onChange={(e) => {
+                            setClient({
+                              ...client,
+                              description: e.target.value,
                             });
                           }}
                         />
